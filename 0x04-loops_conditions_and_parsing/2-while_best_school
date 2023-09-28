@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Print the world "Best School" ten times using while loop
+
+x=0
+while [ $x -lt 10 ]
+do
+    echo "Best School"
+    x=$((x + 1))
+done
