@@ -2,15 +2,18 @@
 # Checking and providing information about the "school" file
 
 f="school"
-if [ -e "$f" ]; then
+if [ -e "$f" ]
+then
     echo "school file exists"
-    if [ -s "$f" ]; then
-        echo "school file is not empty"
-        if [ -f "$f" ]; then
-            echo "school is a regular file"
-        fi
-    else
+    if [ ! -s "$f" ]
+    then
         echo "school file is empty"
+    else
+        echo "school file is not empty"
+    fi
+    if [ -f "$f" ]
+    then
+        echo "school is a regular file"
     fi
 else
     echo "school file does not exist"
