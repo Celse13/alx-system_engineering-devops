@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Keeping the PID of the script in /var/run/myscript.pid
+# Displaying message on receiving signals
+echo $$ > /var/run/myscript.pid
+
+trap 'echo "I hate the kill command"; rm /var/run/myscript.pid; exit' SIGTERM
+trap 'echo "Y U no love me?!"; rm /var/run/myscript.pid; exit' SIGQUIT
+trap 'echo "Y U no love me?!";' SIGINT
+
+while :
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
