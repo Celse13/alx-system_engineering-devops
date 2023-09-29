@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Easily print the value of Bash PID with world "Bash"
+# shellcheck disable=SC2009
+
+ps -aufx | grep bash
