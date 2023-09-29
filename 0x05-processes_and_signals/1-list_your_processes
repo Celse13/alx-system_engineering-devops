@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Print the list of all working processes
+
+ps -aufx
