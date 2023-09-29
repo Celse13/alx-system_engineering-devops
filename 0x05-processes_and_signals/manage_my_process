@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Writing "I am alive in the folder" within infinity loop
+while true
+do
+    echo "I am alive!" >> /tmp/my_process
+    sleep 2
+done
