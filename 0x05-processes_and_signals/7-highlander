@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Terminating infinity loop
+
+trap terminate_with_msg SIGTERM
+
+terminate_with_msg()
+{
+    echo "I am invincible!!!"
+}
+
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
