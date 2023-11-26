@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Connecting to the server using private key stored in the root dir
+ssh ubuntu -i ~/.ssh/school
