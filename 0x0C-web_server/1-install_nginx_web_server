@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Instaalling  nginx
-
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo ufw allow 22
