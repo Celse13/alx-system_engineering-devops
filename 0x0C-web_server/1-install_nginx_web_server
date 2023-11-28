@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
-# Instaalling  nginx
+# Installing nginx
+
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo ufw allow 22
 sudo ufw allow 80
 sudo ufw --force enable
-echo "Hello World!" > sudo tee /var/www/html/index.html
+sudo ufw status
+systemctl status nginx
+echo "Hello World!" | sudo tee /var/www/html/index.html
 sudo service nginx restart
