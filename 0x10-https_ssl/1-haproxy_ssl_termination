@@ -35,7 +35,7 @@ defaults
 
 frontend http_front
     bind *:80
-    bind *:443 ssl crt /etc/letsencrypt/live/www.celseinc.tech/fullchain.pem
+    bind *:443 ssl crt /etc/letsencrypt/archive/www.celseinc.tech/www.celseinc.tech.pem
     http-request redirect scheme https unless { ssl_fc }
     http-request set-header X-Forwarded-Proto https
     use_backend http_back
