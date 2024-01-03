@@ -1,39 +1,38 @@
 #!/usr/bin/python3
-"""Make dictionary"""
+"""Dictionary of list of dictionaries"""
 import json
 import requests
 
 
-def make_export_to_json_dictioinary():
-    """export to json text-base format"""
-    root = f"https://jsonplaceholder.typicode.com/employees"
-    response = requests.get(root)
+def exp_to_json_dict():
+    """get employee progress"""
+    base_url = f"https://jsonplaceholder.typicode.com/users"
+    user_res = requests.get(base_url)
 
-    if response.status_code == 200:
-        employees = response.json()
-        result = {}
-        for employee in employees:
-            employee_id = str(employee.get("id"))
-            employee_name = employee.get("username")
-            url = f"{root}/{employee_id}/todos"
-            todo_response = requests.get(url)
+    if user_res.status_code == 200:
+        users = user_res.json()
+        complete = {}
+        for user in users:
+            emp_id = str(user.get("id"))
+            name = user.get("username")
+            url = f"{base_url}/{emp_id}/todos"
+            task_res = requests.get(url)
 
-            if todo_response.status_code == 200:
-                todos = todo_response.json()
-                content = [{"username": employee_name, "task":
-                            todo.get("title"), "completed":
-                            todo.get("completed")} for todo in todos]
-                result[employee_id] = content
+            if task_res.status_code == 200:
+                tasks = task_res.json()
+                data = [{"username": name, "task": task.get("title"),
+                         "completed": task.get("completed")} for task in tasks]
+                complete[emp_id] = data
             else:
                 print("Task Error")
 
-        json_file = "todo_all_employees.json"
-        with open(json_file, 'w') as file:
-            json.dump(result, file)
+        json_filename = "todo_all_employees.json"
+        with open(json_filename, mode='w') as f:
+            json.dump(complete, f)
 
     else:
         print("User Error")
 
 
 if __name__ == "__main__":
-    make_export_to_json_dictioinary()
+    exp_to_json_dict()
