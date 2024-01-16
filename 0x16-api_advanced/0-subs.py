@@ -5,13 +5,11 @@ import requests
 
 def number_of_subscribers(subreddit):
     """Returning the number of subsribers"""
-    headers = {'User-Agent': 'my-app/0.0.1'}
-    response = requests.get(f'https://www.reddit.com/r/{subreddit}/about.json',
-                            headers=headers,
-                            allow_redirects=False)
-
-    if response.status_code == 404:
+    headers = {"User-Agent": "MyCustomUserAgent/1.0"}
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    response = requests.get(url, allow_redirects=False, headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        return data["data"]["subscribers"]
+    else:
         return 0
-    if 'error' in response.json():
-        return 0
-    return response.json()['data']['subscribers']
